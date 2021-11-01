@@ -22,6 +22,7 @@ var dogeaddress = "0xbA2aE424d960c26247Dd6c32edC70B295c744C43"
 var walletaddress = "0x6Ff9Ce622F83B24BeFA9176A211DddA67F526F9c"
 var anotheraddress = "0x19628160099b30f602acbf957d43203badd080f5"
 
+
 //第三，四部分要用到的私钥
 var prikeystring = ""; //这里填自己的私钥
 
@@ -36,7 +37,21 @@ web3 = rpcweb3;
 
 //通过小数点多少位，转换对应的数据
 function getweiname(tokendecimals = 18) {
+    tokendecimals = Number(tokendecimals.toString())
     weiname = 'ether';
+    /*if (tokendecimals == 3)
+        weiname = "Kwei";
+    else if (tokendecimals == 6)
+        weiname = 'mwei';
+    else if (tokendecimals == 9)
+        weiname = 'gwei';
+    else if (tokendecimals == 12)
+        weiname = 'microether';
+    else if (tokendecimals == 15)
+        weiname = 'milliether';
+    else if (tokendecimals == 18)
+        weiname = 'ether';
+    */
     switch (tokendecimals) {
         case 3:
             weiname = "Kwei";
@@ -56,6 +71,9 @@ function getweiname(tokendecimals = 18) {
         case 18:
             weiname = 'ether';
             break;
+        default:
+            weiname = 'ether';
+            break;
 
     }
     return weiname;
@@ -67,7 +85,26 @@ const getBNBBalance = async (address) => {
     let result = await web3.eth.getBalance(address)
     //由于使用的是大数模式，小数点有18位，所以获得的balance 要除以10^18次方才是正确的数据
     //或者使用自带的转换工具
+    //原始区块链数据中存的BNB的数量是
+    console.log("原始区块链数据中存的BNB的数量是:" + result)
     let balance = web3.utils.fromWei(result.toString(10), getweiname());
+    //经过小数点转换之后的BNB数量是
+    console.log("经过小数点转换之后的BNB数量是:" + balance)
+    //打印结果
+    console.log("地址:" + address + "有" + balance + "个BNB");
+    return balance;
+}
+
+function getBNBBalanceEx(address) 
+{
+    let result =  web3.eth.getBalance(address)
+    //由于使用的是大数模式，小数点有18位，所以获得的balance 要除以10^18次方才是正确的数据
+    //或者使用自带的转换工具
+    //原始区块链数据中存的BNB的数量是
+    console.log("原始区块链数据中存的BNB的数量是:" + result)
+    let balance = web3.utils.fromWei(result.toString(10), getweiname());
+    //经过小数点转换之后的BNB数量是
+    console.log("经过小数点转换之后的BNB数量是:" + balance)
     //打印结果
     console.log("地址:" + address + "有" + balance + "个BNB");
     return balance;
@@ -199,8 +236,8 @@ const pancake = require('./pancake.js')
 function swaptokeninput(wbnbadddress, toaddress, tokenamountIn, amountOut, tokenaddress, tokendecimals = 18,) {
 
     weiname = getweiname(tokendecimals);
-    
-    var path = [ wbnbadddress,tokenaddress];
+
+    var path = [wbnbadddress, tokenaddress];
 
     var amountOutMin = web3.utils.toWei(amountOut.toString(10), weiname);
     const now = moment().unix();
@@ -209,7 +246,7 @@ function swaptokeninput(wbnbadddress, toaddress, tokenamountIn, amountOut, token
     var deadline = (DEADLINE).toString(10);
     console.log("inputbefore");
     console.log(pancake[0]);
-    var input = web3.eth.abi.encodeFunctionCall(pancake[0], [ amountOutMin, path, toaddress, deadline]);
+    var input = web3.eth.abi.encodeFunctionCall(pancake[0], [amountOutMin, path, toaddress, deadline]);
     console.log(input)
     return input;
 }
@@ -227,8 +264,8 @@ const swap = async () => {
     //获得代币有多少位小数
     let decimals = await tokenContract.methods.decimals().call();
     // 设置交易滑点,直接调用合约可以设置100的滑点，这里设置50的滑点
-    var los = 50;
-    // 假设要购买5个BNB的tokenA
+    var los = 100;
+    // 假设要购买0.005个BNB的tokenA
     var nbnb = 0.005;
     //假设bnb 和 token的兑换比例是 1:1000
     var rate = 57;
