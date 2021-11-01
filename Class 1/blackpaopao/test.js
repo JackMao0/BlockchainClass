@@ -292,8 +292,8 @@ const swap = async () => {
 
 const main = async () => {
     //第一部分，获得bnb的的数量
-    getBNBBalance(walletaddress);
-    getBNBBalanceEx(walletaddress)
+    //getBNBBalance(walletaddress);
+    //getBNBBalanceEx(walletaddress)
     //第二部分，获得代币的数量
     //getTokenBalance(wbnbaddress, walletaddress);
 
