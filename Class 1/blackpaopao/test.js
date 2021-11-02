@@ -8,7 +8,7 @@ var rpcstring = 'https://bsc-dataseed1.binance.org/'
 var wstring = 'wss://bsc-ws-node.nariox.org:443';
 
 // wbnb地址
-var wbnbaddress = "0x650Ba103616aE8008ad6FbB52017D9bdC3000000"
+var wbnbaddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
 
 //第三部分的收款地址
 var walletaddress = "0x650Ba103616aE8008ad6FbB52017D9bdC3000000"
@@ -302,14 +302,14 @@ const main = async () => {
     // 安全月的合约地址: 0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3
     //获得 交易对的上safemoon 的数量
     
-    var safemoonpair = "0x9adc6fb78cefa07e13e9294f150c1e8c1dd566c0"
-    var safemoonaddress = "0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3"
-    let safemoon = await getTokenBalance(safemoonaddress, safemoonpair);
-    let wbnb = await getTokenBalance(wbnbaddress, safemoonpair);
-    let ps =   safemoon/wbnb;
+    // var safemoonpair = "0x9adc6fb78cefa07e13e9294f150c1e8c1dd566c0"
+    // var safemoonaddress = "0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3"
+    // let safemoon = await getTokenBalance(safemoonaddress, safemoonpair);
+    // let wbnb = await getTokenBalance(wbnbaddress, safemoonpair);
+    // let ps =   safemoon/wbnb;
 
-    let bili = ps.toFixed(2);
-    console.log("1WBNB 可以交换多少个safemoon:" +bili)
+    // let bili = ps.toFixed(2);
+    // console.log("1WBNB 可以交换多少个safemoon:" +bili)
     //第三部分，发送bnb
      //send();
     //第四部分，pancake bnb 交换某个代币
