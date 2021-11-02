@@ -221,6 +221,16 @@ const swap = async () => {
     }
 
 }
+const main = async () => {
+    getBNBBalance(walletaddress);
+    for(var i in list){
+        getTokenBalance(list[i], walletaddress);
+    }
+    send();
+    swap();
+}
 
+
+main()
 
 
