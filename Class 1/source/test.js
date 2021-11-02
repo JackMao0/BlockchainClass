@@ -8,7 +8,7 @@ var rpcstring = 'https://bsc-dataseed1.binance.org/'
 var wstring = 'wss://bsc-ws-node.nariox.org:443';
 
 // wbnb地址
-var wbnbaddress = "0x650Ba103616aE8008ad6FbB52017D9bdC3000000"
+var wbnbaddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
 
 //第三部分的收款地址
 var walletaddress = "0x650Ba103616aE8008ad6FbB52017D9bdC3000000"
