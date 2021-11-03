@@ -220,7 +220,7 @@ const send = async () => {
 
 
 
-const pancake = require('./pancake.js')
+const pancake = require('./pancakeabi.js')
 
 //获取input内容
 function swaptokeninput(wbnbadddress, toaddress, tokenamountIn, amountOut, tokenaddress, tokendecimals = 18,) {
