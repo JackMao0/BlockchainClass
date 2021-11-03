@@ -292,8 +292,8 @@ const swap = async () => {
 
 const main = async () => {
     //第一部分，获得bnb的的数量
-    getBNBBalance(walletaddress);
-    getBNBBalanceEx(walletaddress)
+    //getBNBBalance(walletaddress);
+    //getBNBBalanceEx(walletaddress)
     //第二部分，获得代币的数量
     //getTokenBalance(wbnbaddress, walletaddress);
 
@@ -302,14 +302,14 @@ const main = async () => {
     // 安全月的合约地址: 0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3
     //获得 交易对的上safemoon 的数量
     
-    var safemoonpair = "0x9adc6fb78cefa07e13e9294f150c1e8c1dd566c0"
-    var safemoonaddress = "0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3"
-    let safemoon = await getTokenBalance(safemoonaddress, safemoonpair);
-    let wbnb = await getTokenBalance(wbnbaddress, safemoonpair);
-    let ps =   safemoon/wbnb;
+    // var safemoonpair = "0x9adc6fb78cefa07e13e9294f150c1e8c1dd566c0"
+    // var safemoonaddress = "0x8076c74c5e3f5852037f31ff0093eeb8c8add8d3"
+    // let safemoon = await getTokenBalance(safemoonaddress, safemoonpair);
+    // let wbnb = await getTokenBalance(wbnbaddress, safemoonpair);
+    // let ps =   safemoon/wbnb;
 
-    let bili = ps.toFixed(2);
-    console.log("1WBNB 可以交换多少个safemoon:" +bili)
+    // let bili = ps.toFixed(2);
+    // console.log("1WBNB 可以交换多少个safemoon:" +bili)
     //第三部分，发送bnb
      //send();
     //第四部分，pancake bnb 交换某个代币
