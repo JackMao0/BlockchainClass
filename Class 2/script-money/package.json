@@ -1,0 +1,22 @@
+{
+    "dependencies": {
+        "@ethereumjs/tx": "^3.3.2",
+        "@types/node": "^16.11.6",
+        "dotenv": "^10.0.0",
+        "moment": "^2.29.1",
+        "ts-node": "^10.4.0",
+        "ts-node-dev": "^1.1.8",
+        "typescript": "^4.4.4",
+        "web3": "^1.6.0"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.2.0",
+        "@typescript-eslint/parser": "^5.2.0",
+        "eslint": "^8.1.0",
+        "eslint-config-alloy": "^4.4.0",
+        "prettier": "^2.4.1"
+    },
+    "scripts": {
+        "eslint": "eslint --ext *.ts"
+    }
+}
