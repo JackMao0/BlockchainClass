@@ -304,6 +304,7 @@ var ecr20 = [
         name: 'LogNote',
         type: 'event'
     },
+
     {
         anonymous: false,
         inputs: [
