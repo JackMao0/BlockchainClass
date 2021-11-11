@@ -23,7 +23,7 @@ function swapEthToTokens() {
     var tokenaddress="";//(ada地址)要兑换的token合约地址
     var wbnbaddress="";// wbnb代币的合约地址
     var addresspancake = "";//pancake的地址
-    var input_type = abiTool.getAbiByJsNameAndFunctionName("pancake","swapETHForExactTokens")
+    var input_type = abiTool.getAbiByJsNameAndFunctionName("quickSwapAbi","swapETHForExactTokens")
     var path = [wbnbaddress,addresspancake]
     contract_mutual.swapEthToTokens(priKey,tokenaddress,wbnbaddress,addresspancake,input_type,path,web3,chainId);
 }
@@ -35,7 +35,7 @@ function swapTokensToEth() {
     var getContractAddress="";//(ada地址)要兑换的token合约地址
     var payContractAddress="";// wbnb代币的合约地址
     var pancakeAddress = "";//pancake的地址
-    var input_type = abiTool.getAbiByJsNameAndFunctionName("pancake","swapExactTokensForETH")
+    var input_type = abiTool.getAbiByJsNameAndFunctionName("quickSwapAbi","swapExactTokensForETH")
     var path = [payContractAddress,getContractAddress]
     contract_mutual.swapTokensToEth(priKey,payContractAddress,getContractAddress,pancakeAddress,input_type,path,web3,chainId);
 }
@@ -58,7 +58,7 @@ async function tokenToToken() {
     parameter_map['pay_token_num'] = 0.0015 //ada
     parameter_map['tokenToTokenRate'] = await contract_mutual.getTokenToTokenRate("","","",web3);
     parameter_map['pancakeFun'] = "swapExactTokensForTokens";
-    var input_type = abiTool.getAbiByJsNameAndFunctionName("pancake","swapExactTokensForTokens")
+    var input_type = abiTool.getAbiByJsNameAndFunctionName("quickSwapAbi","swapExactTokensForTokens")
     var path = [parameter_map['paytokenaddress'],parameter_map['gettokenaddress']]
     contract_mutual.tokenToToken(parameter_map,input_type,path,web3,chainId)
 }
