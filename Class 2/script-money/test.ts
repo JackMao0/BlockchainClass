@@ -69,7 +69,7 @@ const getBNBBalance = async (address: string) => {
 // 读取bnb余额
 // getBNBBalance(addressToCheck)
 
-import erc20 from "./erc20";
+import erc20 from "./ABI/erc20";
 
 // 获得代币数量
 const getTokenBalance = async (tokenaddress: string, address: string) => {
@@ -207,7 +207,7 @@ const transferERC20 = async () => {
     }
 }
 
-import pancake from "./pancake";
+import pancake from "./ABI/pancake";
 
 interface SwapInput {
     wbnbaddress: string,
@@ -231,7 +231,7 @@ function swaptokeninput({ wbnbaddress, toaddress, tokenamountIn, tokenAmountOut,
 
     const deadline = (DEADLINE).toString();
 
-    const input = web3.eth.abi.encodeFunctionCall(pancake[0], [amountOutMin, path as unknown as string, toaddress, deadline]);
+    const input = web3.eth.abi.encodeFunctionCall(pancake.abi[0], [amountOutMin, path as unknown as string, toaddress, deadline]);
     return input;
 }
 
@@ -240,8 +240,6 @@ function tokensToEthInput({ wbnbaddress, toaddress, tokenamountIn, tokenAmountOu
     const weiname = getweiname(tokendecimals);
 
     const path = [tokenaddress, wbnbaddress]
-    console.log('tokenamountIn', tokenamountIn)
-    console.log('tokenAmountOut', tokenAmountOut)
     const amountIn = web3.utils.toWei(tokenamountIn.toString(), weiname);
     const amountOutMin = web3.utils.toWei(tokenAmountOut.toString(), weiname);
 
@@ -250,9 +248,7 @@ function tokensToEthInput({ wbnbaddress, toaddress, tokenamountIn, tokenAmountOu
     const now = moment().unix();
     const DEADLINE = now + 60 * 20; // 往后延迟20分钟
     const deadline = (DEADLINE).toString();
-
-    const input = web3.eth.abi.encodeFunctionCall(pancake[1], [amountIn, amountOutMin, path as unknown as string, to, deadline]);
-    console.log(input)
+    const input = web3.eth.abi.encodeFunctionCall(pancake.abi[1], [amountIn, amountOutMin, path as unknown as string, to, deadline]);
     return input;
 }
 
@@ -338,9 +334,7 @@ const swapTokensToBnb = async () => {
     // 在网站查询大概的bnb/token兑换比例
     const rate = 600000000000;
 
-    const minRecieved = tokenToSell * (100 - los) * 0.01 / rate;
-
-    const wbnbaddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+    const minRecieved = tokenToSell * (100 - los) * 0.01 / rate; const wbnbaddress = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
     const addresspancake = "0x10ed43c718714eb63d5aa57b78b54704e256024e";
 
     // 创建交易执行智能合约
